@@ -17,13 +17,14 @@ export default function Home() {
       className={`flex min-h-screen max-w-screen bg-background flex-col gap-[15px] p-[10px] items-center px-5 ${inter.className}`}
     >
       <h1 className="text-md">Accounts Leaderboard</h1>
-      <motion.div
-        animate={{ y: 0 }}
-        initial={{ y: 200 }}
-        className="flex flex-col gap-[10px] w-full"
-      >
-        {!isLoading ? (
-          accounts?.map((a) => {
+
+      {!isLoading ? (
+        <motion.div
+          animate={{ y: 0 }}
+          initial={{ y: 200 }}
+          className="flex flex-col gap-[10px] w-full"
+        >
+          {accounts?.map((a) => {
             return (
               <AccountCard
                 key={a.ranking}
@@ -33,11 +34,11 @@ export default function Home() {
                 interestRate={a.maxTotal}
               />
             );
-          })
-        ) : (
-          <LoadingSpinner />
-        )}
-      </motion.div>
+          })}
+        </motion.div>
+      ) : (
+        <LoadingSpinner />
+      )}
     </main>
   );
 }
