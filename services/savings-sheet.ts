@@ -1,5 +1,5 @@
 import axios from "axios";
-import cache from "../lib/cache";
+import cache from "../src/lib/cache";
 
 const sheetsAPIKey = process.env.SHEETS_API_KEY;
 
