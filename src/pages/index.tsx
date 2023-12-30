@@ -17,25 +17,27 @@ export default function Home() {
       className={`flex min-h-screen max-w-screen bg-background flex-col gap-[15px] p-[10px] items-center px-5 ${inter.className}`}
     >
       <h1 className="text-md">Accounts Leaderboard</h1>
-      <div className="flex flex-col gap-[10px] w-full">
+      <motion.div
+        animate={{ y: 0 }}
+        initial={{ y: 200 }}
+        className="flex flex-col gap-[10px] w-full"
+      >
         {!isLoading ? (
-          <motion.div animate={{ y: 0 }} initial={{ y: 200 }}>
-            {accounts?.map((a) => {
-              return (
-                <AccountCard
-                  key={a.ranking}
-                  name={a.bankingProduct}
-                  imageUrl={a.bankImage}
-                  ranking={a.ranking}
-                  interestRate={a.maxTotal}
-                />
-              );
-            })}
-          </motion.div>
+          accounts?.map((a) => {
+            return (
+              <AccountCard
+                key={a.ranking}
+                name={a.bankingProduct}
+                imageUrl={a.bankImage}
+                ranking={a.ranking}
+                interestRate={a.maxTotal}
+              />
+            );
+          })
         ) : (
           <LoadingSpinner />
         )}
-      </div>
+      </motion.div>
     </main>
   );
 }
