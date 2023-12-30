@@ -1,7 +1,8 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useAccounts } from "../hooks/accounts";
 import AccountCard from "@/components/AccountCard";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import { motion } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +18,9 @@ export default function Home() {
     >
       <h1 className="text-md">Accounts Leaderboard</h1>
       <div className="flex flex-col gap-[10px] w-full">
-        {!isLoading
-          ? accounts?.map((a) => {
+        {!isLoading ? (
+          <motion.div animate={{ y: 0 }} initial={{ y: 200 }}>
+            {accounts?.map((a) => {
               return (
                 <AccountCard
                   key={a.ranking}
@@ -28,8 +30,11 @@ export default function Home() {
                   interestRate={a.maxTotal}
                 />
               );
-            })
-          : null}
+            })}
+          </motion.div>
+        ) : (
+          <LoadingSpinner />
+        )}
       </div>
     </main>
   );
