@@ -1,11 +1,20 @@
 import axios from "axios";
+import cache from "../lib/cache";
 
 const sheetsAPIKey = process.env.SHEETS_API_KEY;
+
+type AccountsData = Record<string, Record<string, string | number>>;
 
 /**
  * Retrieves data from the Savings sheet in Accounts Leaderboard google spreadsheet.
  */
 const getData = async () => {
+  // grabbing from cache first.
+  const existingData = cache.get<AccountsData>("accountsData");
+  if (existingData) {
+    return existingData;
+  }
+
   // getTitle() is required as the title will change periodically as the version
   // increases, therefore getting it dynamically is required.
   const savingsSheetTitle = await getTitle();
@@ -20,6 +29,8 @@ const getData = async () => {
   ).data.values;
 
   const processedData = processSavingsData(bankImages, accountsData);
+
+  cache.set("accountsData", processedData, 86400); // set for 1 day.
 
   return processedData;
 };
