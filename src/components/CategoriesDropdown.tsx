@@ -23,7 +23,7 @@ const CategoriesDropdown = ({ className, handleChange, selectedCategory }: Dropd
         }}
       >
         <div>
-          <p className="text-center text-md line-clamp-1">{camelToNormal(selectedCategory)}</p>
+          <p className="text-md line-clamp-1">{camelToNormal(selectedCategory)}</p>
         </div>
         <ChevronDownIcon className="w-5 h-5" />
       </div>
