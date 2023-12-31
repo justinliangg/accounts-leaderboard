@@ -32,7 +32,7 @@ const AccountCard = ({ imageUrl, name, interestRate, ranking }: AccountCardProps
             <p className="text-sm font-bold">{interestRate}</p>
           </div>
         </div>
-        <div className="h-5 w-5">
+        <div>
           <ChevronRightIcon className="h-5 w-5" />
         </div>
       </div>
