@@ -17,7 +17,9 @@ const CategoriesDropdown = ({ className, handleChange, selectedCategory }: Dropd
   return (
     <div className={`bg-secondary px-[10px] py-[8px] rounded-[8px] cursor-pointer ${className}`}>
       <div
-        className={`flex flex-row justify-between items-center gap-[5px]`}
+        className={`flex flex-row justify-between items-center gap-0.5 
+          ${isLoading ? "opacity-20 cursor-not-allowed pointer-events-none" : ""}
+        `}
         onClick={() => {
           setPanelOpen(true);
         }}
