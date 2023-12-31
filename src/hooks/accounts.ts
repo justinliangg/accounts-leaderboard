@@ -31,6 +31,21 @@ export const useAccounts = (category: string, searchQuery: string) => {
 
   return useQuery({
     queryKey: ["accounts", category, searchQuery],
+    queryFn: queryFn,
+    enabled: !!category
+  });
+};
+
+export const useCategories = () => {
+  const queryFn = async (): Promise<string[]> => {
+    const res = await apiClient.get(`/accounts/categories`);
+
+    // Not sure why axios does not convert to JSON.
+    return JSON.parse(res.data);
+  };
+
+  return useQuery({
+    queryKey: ["categories"],
     queryFn: queryFn
   });
 };
