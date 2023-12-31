@@ -22,8 +22,11 @@ const AccountCard = ({ imageUrl, name, interestRate, ranking }: AccountCardProps
     >
       <div className="bg-secondary flex flex-row p-3 h-[60px] items-center w-full rounded-[10px] justify-between">
         <div className="flex flex-row gap-[10px] items-center">
-          <p>{ranking}</p>
-          <img className="object-cover h-[40px] w-[40px]" src={imageUrl} alt={`${name} image`} />
+          <div>
+            <p className="min-w-6 max-w-10 text-center">{`${ranking}`}</p>
+          </div>
+
+          <img className="h-[40px] w-[40px]" src={imageUrl} alt={`${name} image`} />
           <div className="flex flex-col">
             <p className="text-sm line-clamp-1">{name}</p>
             <p className="text-sm font-bold">{interestRate}</p>
