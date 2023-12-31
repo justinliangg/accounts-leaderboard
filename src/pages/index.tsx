@@ -19,7 +19,7 @@ export default function Home() {
   };
 
   return (
-    <main className={`flex flex-col gap-[15px] items-center md:w-[80%] ${inter.className}`}>
+    <main className={`flex flex-col gap-[15px] items-center w-full md:w-[80%] ${inter.className}`}>
       <h1 className="text-md">Accounts Leaderboard</h1>
       <Searchbar onChange={onSearch} className="w-full h-[40px]" />
       <div className="transition flex flex-col w-full gap-[10px] ">
