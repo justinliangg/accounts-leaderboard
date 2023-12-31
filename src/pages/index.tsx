@@ -31,9 +31,9 @@ export default function Home() {
       <CategoriesDropdown
         selectedCategory={category}
         handleChange={(category: string) => setCategory(category)}
-        className="w-[70%] h-[40px]"
+        className="w-[70%]"
       />
-      <Searchbar onChange={onSearch} className="w-full h-[40px]" />
+      <Searchbar onChange={onSearch} className="w-full" />
       <div className="transition flex flex-col w-full gap-[10px] ">
         {!isLoading ? (
           accounts?.map((a) => {

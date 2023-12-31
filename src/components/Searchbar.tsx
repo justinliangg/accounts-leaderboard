@@ -9,12 +9,12 @@ interface SearchbarProps {
 const Searchbar = ({ onChange, className }: SearchbarProps) => {
   return (
     <div
-      className={`flex flex-row py-[5px] px-[8px] gap-2 items-center bg-secondary rounded-[8px] ${className}`}
+      className={`flex flex-row py-[8px] px-[8px] gap-2 items-center bg-secondary rounded-[8px] ${className}`}
     >
       <MagnifyingGlassIcon className="w-5 h-5" />
       <input
         placeholder="Search"
-        className="w-full bg-inherit outline-none"
+        className="w-full text-md bg-inherit outline-none"
         onChange={onChange}
       ></input>
     </div>

@@ -15,14 +15,14 @@ const CategoriesDropdown = ({ className, handleChange, selectedCategory }: Dropd
   const { data: categories, isLoading } = useCategories();
 
   return (
-    <div className={`bg-secondary p-[10px] rounded-[8px] cursor-pointer ${className}`}>
+    <div className={`bg-secondary px-[10px] py-[8px] rounded-[8px] cursor-pointer ${className}`}>
       <div
         className={`flex flex-row justify-between items-center`}
         onClick={() => {
           setPanelOpen(true);
         }}
       >
-        <p className="text-md line-clamp-1">{camelToNormal(selectedCategory)}</p>
+        <p className="text-center text-md line-clamp-1">{camelToNormal(selectedCategory)}</p>
         <ChevronDownIcon className="w-5 h-5" />
       </div>
       <BottomPane open={panelOpen}>
