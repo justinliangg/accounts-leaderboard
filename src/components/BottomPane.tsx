@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 
 interface BottomPaneProps {
   open: boolean;
@@ -6,6 +6,15 @@ interface BottomPaneProps {
 }
 
 const BottomPane = ({ open, children }: BottomPaneProps) => {
+  // disable overflow on main body when pane is open.
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "auto";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open]);
+
   return (
     <div
       className={`fixed bottom-0 left-0 right-0 ${
