@@ -2,29 +2,22 @@ import { Inter } from "next/font/google";
 import { useAccounts } from "../hooks/accounts";
 import AccountCard from "@/components/AccountCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
-import { motion } from "framer-motion";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const { data: accounts, isLoading } = useAccounts("regular", "");
+  const [category, setCategory] = useState("regular");
+  const { data: accounts, isLoading } = useAccounts(category, "");
 
-  console.log(isLoading);
-
-  console.log(typeof accounts);
   return (
     <main
       className={`flex min-h-screen max-w-screen bg-background flex-col gap-[15px] p-[10px] items-center px-5 ${inter.className}`}
     >
       <h1 className="text-md">Accounts Leaderboard</h1>
-
-      {!isLoading ? (
-        <motion.div
-          animate={{ y: 0 }}
-          initial={{ y: 200 }}
-          className="flex flex-col gap-[10px] w-full"
-        >
-          {accounts?.map((a) => {
+      <div className="transition flex flex-col w-full gap-[10px]">
+        {!isLoading ? (
+          accounts?.map((a) => {
             return (
               <AccountCard
                 key={a.ranking}
@@ -34,11 +27,11 @@ export default function Home() {
                 interestRate={a.maxTotal}
               />
             );
-          })}
-        </motion.div>
-      ) : (
-        <LoadingSpinner />
-      )}
+          })
+        ) : (
+          <LoadingSpinner />
+        )}
+      </div>
     </main>
   );
 }
