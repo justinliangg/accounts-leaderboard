@@ -8,6 +8,8 @@ const Footer = () => {
           Data sourced from Techt&apos;s{" "}
           <Link
             className="underline"
+            rel="noopener noreferrer"
+            target="_blank"
             href="https://docs.google.com/spreadsheets/d/145iM6uuFS9m-Rul65--eFJQq_Au7Z_BA4_CwkYwu2DI/edit#gid=0"
           >
             spreadsheet
