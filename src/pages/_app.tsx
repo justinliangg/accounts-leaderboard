@@ -8,7 +8,7 @@ const queryClient = new QueryClient();
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <main className="text-primary">
+      <main className="text-primary min-h-screen max-w-screen bg-background py-[10px] px-5 flex flex-col items-center">
         <Component {...pageProps} />
         <Analytics />
       </main>
