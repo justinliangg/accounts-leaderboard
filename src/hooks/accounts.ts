@@ -19,7 +19,11 @@ interface AccountResponse {
 
 export const useAccounts = (category: string, searchQuery: string) => {
   const queryFn = async (): Promise<AccountResponse[]> => {
-    const res = await apiClient.get(`/accounts?category=${category}`);
+    const params = new URLSearchParams({
+      category,
+      searchQuery
+    });
+    const res = await apiClient.get(`/accounts?${params.toString()}`);
 
     // Not sure why axios does not convert to JSON.
     return JSON.parse(res.data);

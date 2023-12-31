@@ -3,14 +3,12 @@ import cache from "../src/lib/cache";
 
 const sheetsAPIKey = process.env.SHEETS_API_KEY;
 
-type AccountsData = Record<string, Record<string, string | number>>;
-
 /**
  * Retrieves data from the Savings sheet in Accounts Leaderboard google spreadsheet.
  */
 const getData = async () => {
   // grabbing from cache first.
-  const existingData = cache.get<AccountsData>("accountsData");
+  const existingData = cache.get<Record<string, Record<string, string>[]>>("accountsData");
   if (existingData) {
     return existingData;
   }
@@ -59,7 +57,7 @@ const processSavingsData = (images: string[], data: string[][]) => {
   data.splice(0, 1);
   const categories = buildCategories(data);
 
-  const processedData: Record<string, Record<string, string | number>[]> = {};
+  const processedData: Record<string, Record<string, string>[]> = {};
   let currCategory = categories[0];
   let nextCategory = categories[1];
   for (let i = 0; i < categories.length - 1; i++) {
@@ -77,8 +75,8 @@ const processSavingsData = (images: string[], data: string[][]) => {
       const bankImage = match && match[1] ? match[1] : "";
 
       // building the account info with the fieldName and the respective data.
-      const accountInfo: Record<string, string | number> = {
-        ranking,
+      const accountInfo: Record<string, string> = {
+        ranking: `${ranking}`,
         bankImage
       };
       for (let k = 1; k < account.length; k++) {
@@ -105,7 +103,7 @@ const processSavingsData = (images: string[], data: string[][]) => {
     const match = images[j][0].match(/"([^"]+)"/);
     const bankImage = match && match[1] ? match[1] : "";
 
-    const productInfo: Record<string, string | number> = { ranking, bankImage };
+    const productInfo: Record<string, string> = { ranking: `${ranking}`, bankImage };
     for (let k = 1; k < product.length; k++) {
       const fieldName = camalize(fields[k - 1]);
       const fieldData = product[k];

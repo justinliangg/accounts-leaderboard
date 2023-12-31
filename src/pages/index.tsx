@@ -2,19 +2,28 @@ import { Inter } from "next/font/google";
 import { useAccounts } from "../hooks/accounts";
 import AccountCard from "@/components/AccountCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
-import { useState } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
+import Searchbar from "@/components/Searchbar";
+import { useDebounce } from "use-debounce";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [category, setCategory] = useState("regular");
-  const { data: accounts, isLoading } = useAccounts(category, "");
+  const [searchValue, setSearchValue] = useState("");
+  const [searchQuery] = useDebounce(searchValue, 1000);
+  const { data: accounts, isLoading } = useAccounts(category, searchQuery);
+
+  const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
 
   return (
     <main
       className={`flex min-h-screen max-w-screen bg-background flex-col gap-[15px] p-[10px] items-center px-5 ${inter.className}`}
     >
       <h1 className="text-md">Accounts Leaderboard</h1>
+      <Searchbar onChange={onSearch} className="w-full h-[40px]" />
       <div className="transition flex flex-col w-full gap-[10px]">
         {!isLoading ? (
           accounts?.map((a) => {
