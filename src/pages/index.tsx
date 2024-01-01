@@ -21,8 +21,8 @@ export default function Home() {
     setCategory(categories ? categories[0] : "");
   }, [categories]);
 
-  const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
+  const onSearch = (value: string) => {
+    setSearchValue(value);
   };
 
   return (
