@@ -31,7 +31,11 @@ const AccountCard = ({ accountDetails }: AccountCardProps) => {
             <p className="min-w-6 max-w-10 text-center">{`${accountDetails.ranking}`}</p>
           </div>
 
-          <img className="h-[40px] w-[40px]" src={accountDetails.bankImage} alt={`${name} image`} />
+          <img
+            className="h-[40px] w-[40px]"
+            src={accountDetails.bankImage}
+            alt={`${accountDetails.bankingProduct} image`}
+          />
           <div className="flex flex-col">
             <p className="text-sm line-clamp-1">{accountDetails.bankingProduct}</p>
             <p className="text-sm font-bold">{accountDetails.maxTotal}</p>

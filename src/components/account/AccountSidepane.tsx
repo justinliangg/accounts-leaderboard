@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { ChevronLeftIcon } from "@heroicons/react/24/outline";
+import { ChevronLeftIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import SidePane from "@/components/common/panels/SidePane";
 import { AccountResponse } from "@/types";
 import Link from "next/link";
@@ -25,13 +25,13 @@ const AccountSidePane = ({ accountDetails, panelOpen, setPanelOpen }: AccountSid
           <img
             className="h-[50px] w-[50px] object-cover"
             src={accountDetails.bankImage}
-            alt={`${name} image`}
+            alt={`${accountDetails.bankingProduct} image`}
           />
           <p className="text-lg">{accountDetails.bankingProduct}</p>
         </div>
 
         {/* Interest Rates */}
-        <table>
+        <table className="table-auto">
           <thead>
             <tr>
               {/* Most hacked way */}
@@ -86,9 +86,12 @@ const AccountSidePane = ({ accountDetails, panelOpen, setPanelOpen }: AccountSid
           rel="noopener noreferrer"
           target="_blank"
           href={accountDetails.link}
-          className="self-center flex items-center bg-secondary w-30 max-w-[40%] min-h-10 px-[10px] py-[5px] rounded-[10px] border-[1px]"
+          className="self-center flex items-center bg-secondary w-30 max-w-[50%] min-h-10 px-[10px] py-[5px] rounded-[10px] border-[1px]"
         >
-          <span className="leading-0">More details</span>
+          <span className="flex flex-row items-center gap-2">
+            <p className="text-nowrap">More details</p>
+            <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+          </span>
         </Link>
       </div>
     </SidePane>
