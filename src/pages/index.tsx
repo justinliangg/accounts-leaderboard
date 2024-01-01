@@ -17,11 +17,16 @@ export default function Home() {
 
   const router = useRouter();
 
-  const { data: accounts, isLoading } = useAccounts(category, searchQuery);
-
   useEffect(() => {
-    setCategory(categories ? categories[0] : "");
-  }, [categories]);
+    // Retrieve values from URL or use default values
+    const savedCategory = router.query.category || (categories ? categories[0] : "");
+    const savedQuery = router.query.searchQuery || "";
+
+    setCategory(savedCategory as string);
+    setSearchValue(savedQuery as string);
+  }, [router.query, categories]);
+
+  const { data: accounts, isLoading } = useAccounts(category, searchQuery);
 
   const onCategoryChange = (category: string) => {
     setCategory(category);
@@ -40,15 +45,6 @@ export default function Home() {
       query: { ...router.query, searchQuery: value }
     });
   };
-
-  useEffect(() => {
-    // Retrieve values from URL or use default values
-    const savedCategory = router.query.category || "";
-    const savedQuery = router.query.searchQuery || "";
-
-    setCategory(savedCategory as string);
-    setSearchValue(savedQuery as string);
-  }, [router.query]);
 
   return (
     <main className={`flex flex-col gap-[15px] items-center w-full md:w-[80%] ${inter.className}`}>

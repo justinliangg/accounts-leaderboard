@@ -11,8 +11,6 @@ interface AccountCardProps {
 }
 
 const AccountCard = ({ accountDetails }: AccountCardProps) => {
-  const [panelOpen, setPanelOpen] = useState(false);
-
   const router = useRouter();
 
   return (
