@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head title="Savings Accounts Leaderboard">
-        <meta name="theme-color" content="#ff8000" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
       <body>
         <Main />
