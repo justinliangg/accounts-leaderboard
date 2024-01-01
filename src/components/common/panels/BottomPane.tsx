@@ -18,8 +18,8 @@ const BottomPane = ({ open, children }: BottomPaneProps) => {
   return (
     <div
       className={`fixed bottom-0 left-0 right-0 ${
-        open ? "h-[100%]" : "h-0 hidden"
-      } bg-white overflow-hidden transition-height duration-500 ease-in-out border-t border-gray-100 pb-14`}
+        open ? "h-[100%]" : "h-0"
+      } bg-white overflow-hidden transition-all duration-500 ease-in-out border-t border-gray-100 pb-14`}
     >
       <div>{children}</div>
     </div>

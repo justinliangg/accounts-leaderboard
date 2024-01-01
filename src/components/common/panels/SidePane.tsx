@@ -17,7 +17,7 @@ const SidePane = ({ children, open }: SidePaneProps) => {
   return (
     <div
       className={`fixed inset-y-0 right-0 w-full bg-white transform ${
-        open ? "translate-x-0" : "translate-x-full hidden"
+        open ? "translate-x-0" : "translate-x-full"
       } transition-transform duration-500 ease-in-out pb-14`}
     >
       {/* Your panel content goes here */}
