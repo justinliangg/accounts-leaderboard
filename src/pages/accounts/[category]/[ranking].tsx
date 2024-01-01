@@ -14,7 +14,7 @@ const Account = () => {
   const accountDetail = accounts ? accounts?.[Number.parseInt(ranking) - 1] : null;
 
   return (
-    <div className="flex flex-col p-[10px] gap-[15px] h-full overflow-y-auto pb-14">
+    <div className="flex flex-col p-[10px] gap-[15px] h-full overflow-y-auto pb-14 w-full">
       <button
         className="w-7 h-7 cursor-pointer border-2 border-primary rounded-[8px]"
         onClick={() => {
