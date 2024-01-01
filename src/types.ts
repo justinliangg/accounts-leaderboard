@@ -12,4 +12,5 @@ export interface AccountResponse {
   effectiveAsOf: string;
   lastCheckedOrEdited: string;
   link: string;
+  category: string;
 }

@@ -65,7 +65,7 @@ const processSavingsData = (images: string[], data: string[][]) => {
     currCategory = categories[i];
     nextCategory = categories[i + 1];
 
-    // Adding the relevant account in each categorie.
+    // Adding the relevant account in each category.
     const accounts = [];
     for (let j = currCategory.startIndex; j < nextCategory.startIndex - 1; j++) {
       const account = data[j];
@@ -77,7 +77,8 @@ const processSavingsData = (images: string[], data: string[][]) => {
       // building the account info with the fieldName and the respective data.
       const accountInfo: Record<string, string> = {
         ranking: `${ranking}`,
-        bankImage
+        bankImage,
+        category: camalize(currCategory.name)
       };
       for (let k = 1; k < account.length; k++) {
         const fieldName = camalize(fields[k - 1]);
@@ -103,7 +104,11 @@ const processSavingsData = (images: string[], data: string[][]) => {
     const match = images[j][0].match(/"([^"]+)"/);
     const bankImage = match && match[1] ? match[1] : "";
 
-    const productInfo: Record<string, string> = { ranking: `${ranking}`, bankImage };
+    const productInfo: Record<string, string> = {
+      ranking: `${ranking}`,
+      bankImage,
+      category: camalize(currCategory.name)
+    };
     for (let k = 1; k < product.length; k++) {
       const fieldName = camalize(fields[k - 1]);
       const fieldData = product[k];

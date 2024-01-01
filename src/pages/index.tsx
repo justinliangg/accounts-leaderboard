@@ -1,11 +1,11 @@
 import { Inter } from "next/font/google";
 import { useAccounts, useCategories } from "../hooks/accounts";
-import AccountCard from "@/components/AccountCard";
-import LoadingSpinner from "@/components/LoadingSpinner";
+import AccountCard from "@/components/account/AccountCard";
+import LoadingSpinner from "@/components/common/LoadingSpinner";
 import { ChangeEvent, useState, useEffect } from "react";
-import Searchbar from "@/components/Searchbar";
+import Searchbar from "@/components/common/Searchbar";
 import { useDebounce } from "use-debounce";
-import CategoriesDropdown from "@/components/CategoriesDropdown";
+import CategoriesDropdown from "@/components/account/CategoriesDropdown";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,15 +37,7 @@ export default function Home() {
       <div className="transition flex flex-col w-full gap-[10px] ">
         {!isLoading ? (
           accounts?.map((a) => {
-            return (
-              <AccountCard
-                key={a.ranking}
-                name={a.bankingProduct}
-                imageUrl={a.bankImage}
-                ranking={a.ranking}
-                interestRate={a.maxTotal}
-              />
-            );
+            return <AccountCard key={a.ranking} accountDetails={a} />;
           })
         ) : (
           <LoadingSpinner />

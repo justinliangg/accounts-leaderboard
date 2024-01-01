@@ -1,21 +1,6 @@
 import apiClient from "../lib/api-client";
 import { useQuery } from "@tanstack/react-query";
-
-interface AccountResponse {
-  ranking: number;
-  bankImage: string;
-  bankingProduct: string;
-  validFrom: string;
-  base: string;
-  maxBonus: string;
-  maxTotal: string;
-  requirementForBonus: string;
-  maxBalance: string;
-  comments: string;
-  effectiveAsOf: string;
-  lastCheckedOrEdited: string;
-  link: string;
-}
+import { AccountResponse } from "@/types";
 
 export const useAccounts = (category: string, searchQuery: string) => {
   const queryFn = async (): Promise<AccountResponse[]> => {

@@ -1,6 +1,6 @@
 import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import BottomPane from "@/components/BottomPane";
+import BottomPane from "@/components/common/panels/BottomPane";
 import { useCategories } from "@/hooks/accounts";
 import { camelToNormal } from "@/lib/string";
 
