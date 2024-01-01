@@ -3,9 +3,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 export default function Document() {
   return (
     <Html lang="en">
-      <Head title="Savings Accounts Leaderboard">
-        <meta name="theme-color" content="#ffffff" />
-      </Head>
+      <Head title="Savings Accounts Leaderboard"></Head>
       <body>
         <Main />
         <NextScript />
