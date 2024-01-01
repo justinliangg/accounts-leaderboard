@@ -4,7 +4,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "@/components/common/Footer";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false
+    }
+  }
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
