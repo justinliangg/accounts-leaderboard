@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import AccountSidePane from "@/components/account/AccountSidepane";
 import { AccountResponse } from "@/types";
+import { useRouter } from "next/router";
 
 interface AccountCardProps {
   accountDetails: AccountResponse;
@@ -11,6 +12,8 @@ interface AccountCardProps {
 
 const AccountCard = ({ accountDetails }: AccountCardProps) => {
   const [panelOpen, setPanelOpen] = useState(false);
+
+  const router = useRouter();
 
   return (
     <motion.li
@@ -23,7 +26,9 @@ const AccountCard = ({ accountDetails }: AccountCardProps) => {
       className="flex flex-col gap-[10px] w-full"
     >
       <div
-        onClick={() => setPanelOpen(true)}
+        onClick={() =>
+          router.push(`/accounts/${accountDetails.category}/${accountDetails.ranking}`)
+        }
         className="bg-secondary flex flex-row p-3 h-[60px] items-center w-full rounded-[10px] justify-between"
       >
         <div className="flex flex-row gap-[10px] items-center">
@@ -45,11 +50,6 @@ const AccountCard = ({ accountDetails }: AccountCardProps) => {
           <ChevronRightIcon className="h-5 w-5" />
         </div>
       </div>
-      <AccountSidePane
-        accountDetails={accountDetails}
-        panelOpen={panelOpen}
-        setPanelOpen={setPanelOpen}
-      />
     </motion.li>
   );
 };
