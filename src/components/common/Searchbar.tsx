@@ -4,13 +4,11 @@ import { ChangeEvent, useState } from "react";
 interface SearchbarProps {
   className?: string;
   onChange: (value: string) => void;
+  searchValue: string;
 }
 
-const Searchbar = ({ onChange, className }: SearchbarProps) => {
-  const [searchValue, setSearchValue] = useState("");
-
+const Searchbar = ({ onChange, className, searchValue }: SearchbarProps) => {
   const handleChange = (value: string) => {
-    setSearchValue(value);
     onChange(value);
   };
 
