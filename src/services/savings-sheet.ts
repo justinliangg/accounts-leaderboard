@@ -107,7 +107,7 @@ const processSavingsData = (images: string[], data: string[][]) => {
     const productInfo: Record<string, string> = {
       ranking: `${ranking}`,
       bankImage,
-      category: camalize(currCategory.name)
+      category: camalize(nextCategory.name)
     };
     for (let k = 1; k < product.length; k++) {
       const fieldName = camalize(fields[k - 1]);
