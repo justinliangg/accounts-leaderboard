@@ -4,7 +4,6 @@ import AccountCard from "@/components/account/AccountCard";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import { useState, useEffect } from "react";
 import Searchbar from "@/components/common/Searchbar";
-import { useDebounce } from "use-debounce";
 import CategoriesDropdown from "@/components/account/CategoriesDropdown";
 import { useRouter } from "next/router";
 const inter = Inter({ subsets: ["latin"] });
@@ -12,7 +11,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const { data: categories } = useCategories();
   const [searchValue, setSearchValue] = useState("");
-  const [searchQuery] = useDebounce(searchValue, 1000);
   const [category, setCategory] = useState("");
 
   const router = useRouter();
@@ -26,7 +24,7 @@ export default function Home() {
     setSearchValue(savedQuery as string);
   }, [router.query, categories]);
 
-  const { data: accounts, isLoading } = useAccounts(category, searchQuery);
+  const { data: accounts, isLoading } = useAccounts(category, searchValue);
 
   const onCategoryChange = (category: string) => {
     setCategory(category);
