@@ -53,6 +53,9 @@ const processSavingsData = (images: string[], data: string[][]) => {
   const fields = data[0].map((d) => d.replace(/\n/g, " "));
   fields.splice(1, 1); // removing an empty field
 
+  // fix on 20/01/24 due to removal of product name in spreadsheet.
+  fields[0] = "Banking Product";
+
   // remove after retrieving the fields
   data.splice(0, 1);
   const categories = buildCategories(data);
