@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import AccountSidePane from "@/components/account/AccountSidepane";
 import { AccountResponse } from "@/types";
 import { useRouter } from "next/router";
 
