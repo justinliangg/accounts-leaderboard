@@ -16,7 +16,7 @@ const Account = () => {
   return (
     <div className="flex flex-col p-[10px] gap-[15px] h-full overflow-y-auto pb-14 w-full">
       <button
-        className="w-7 h-7 cursor-pointer border-2 border-primary rounded-[8px]"
+        className="w-8 h-8 cursor-pointer border-2 border-primary rounded-[8px] active:bg-gray-200"
         onClick={() => {
           router.back();
         }}
