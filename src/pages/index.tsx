@@ -24,7 +24,7 @@ export default function Home() {
     setSearchValue(savedQuery as string);
   }, [router.query, categories]);
 
-  const { data: accounts, isLoading } = useAccounts(category, searchValue);
+  const { data: accounts, isLoading, isFetching } = useAccounts(category, searchValue);
 
   const onCategoryChange = (category: string) => {
     setCategory(category);
@@ -54,7 +54,7 @@ export default function Home() {
       />
       <Searchbar searchValue={searchValue} onChange={onSearch} className="w-full" />
       <div className="transition flex flex-col w-full gap-[10px] ">
-        {!isLoading ? (
+        {!isLoading && category ? (
           accounts?.map((a) => {
             return <AccountCard key={a.ranking} accountDetails={a} />;
           })
